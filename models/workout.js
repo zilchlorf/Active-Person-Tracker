@@ -32,11 +32,11 @@ const ExerciseSchema = new Schema({
 });
 
 const WorkoutSchema = new Schema({
-  exercises: [ExerciseSchema],
   day: {
     type: Date,
     default: Date.now
-  }
+  },
+  exercises: [ExerciseSchema]
 });
 
 const Workout = mongoose.model("Workout", WorkoutSchema);

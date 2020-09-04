@@ -35,10 +35,10 @@ router.post("/workouts", (req, res) => {
     })
 });
 //matches line 16 on api.js
-router.put("/workouts/:id", (req, res) => {
+router.put("/workouts/:id", ({body, params}, res) => {
    
-    db.Workout.findByIdAndUpdate(req.params.id,
-        {$push:{dbworkout: req.body}},{new: true})
+    db.Workout.findByIdAndUpdate(params.id,
+        {$push:{exercises: body}},{new: true})
     .then(dbworkout =>{
         console.log("Here is what got put in put route",dbworkout)
         res.json(dbworkout)
